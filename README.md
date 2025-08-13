@@ -9,7 +9,7 @@ import pandas as pd
 df = pd.read_csv("datasets/epl.csv")
 
 # Step 1: Clean the "Qualification or relegation" column by removing bracketed text
-df["Qualification or relegation"] = df["Qualification or relegation"].str.replace(r'\[.+]', "",regex=True).str.strip()
+df["Qualification or relegation"] = df["Qualification or relegation"].str.replace(r'/[.+]', "",regex=True).str.strip()
 
 # Step 2: Save the cleaned DataFrame to a new CSV file
 df.to_csv("datasets/epl_cleaned.csv")
@@ -88,7 +88,7 @@ GROUP BY team
 ORDER BY titles_won DESC
 LIMIT 1;
 ```
-![question1](assets\question1.png)
+![question1](assets/question1.png)
 
 #### What is the average number of points scored by teams each season?
 ```sql
@@ -97,7 +97,7 @@ FROM premier_league_standings
 GROUP BY season
 ORDER BY season;
 ```
-![question2](assets\question2.png)
+![question2](assets/question2.png)
 
 #### Which season had the highest total goals scored (GF) by all teams combined?
 ```sql
@@ -107,7 +107,7 @@ GROUP BY season
 ORDER BY total_goals DESC
 LIMIT 1;
 ```
-![question3](assets\question3.png)
+![question3](assets/question3.png)
 
 #### For each season, which team had the best goal difference (GD)?
 ```sql
@@ -120,7 +120,7 @@ WHERE (season,goals_for) IN (
 )
 ORDER BY season;
 ```
-![question4](assets\question4.png)
+![question4](assets/question4.png)
 
 #### Which team has conceded the fewest goals (GA) in a single season?
 ```sql
@@ -153,7 +153,7 @@ FROM premier_league_standings
 GROUP BY season
 ORDER BY season;
 ```
-![question8](assets\question8.png)
+![question8](assets/question8.png)
 
 #### Which qualification/relegation status is most common for teams finishing in positions 1–4?
 ```sql
@@ -164,7 +164,7 @@ GROUP BY qualification_or_relegation
 ORDER BY freq DESC
 LIMIT 1;
 ```
-![question9](assets\question9.png)
+![question9](assets/question9.png)
 
 #### Which teams have been relegated the most times across all seasons? 
 ```sql
@@ -174,4 +174,4 @@ WHERE qualification_or_relegation LIKE '%Relegation%'
 GROUP BY team
 ORDER BY relegations DESC;
 ```
-![question10](assets\question10.png)
+![question10](assets/question10.png)
